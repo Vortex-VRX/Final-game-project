@@ -94,21 +94,4 @@ public class Player_Cont : MonoBehaviour
         Player_Animator.SetInteger("IsJump", 0);
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            Debug.Log("Player landed");
-            isGrounded = true;
-        }
-        else if (collision.gameObject.CompareTag("object"))
-        {
-            isGameStarted = false;
-            isGameOver = true;
-
-            Player_Animator.applyRootMotion = true;
-            Player_Animator.SetInteger("IsDie", 1);
-            GameOverPanle.gameObject.SetActive(true);
-        }
-    }
 }
