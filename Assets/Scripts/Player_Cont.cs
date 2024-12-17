@@ -21,13 +21,25 @@ public class Player_Cont : MonoBehaviour
     private bool isGameOver = false;
 
     void Start()
+{
+    rb = GetComponent<Rigidbody>();
+    isGameStarted = false;
+    isGameOver = false;
+    current_pos = 0;
+    Time.timeScale = 1;
+
+    // Fetch and apply the selected character attributes
+    CharacterData characterData = GameManager.Instance.GetSelectedCharacter();
+    if (characterData != null)
     {
-        rb = GetComponent<Rigidbody>();
-        isGameStarted = false;
-        isGameOver = false;
-        current_pos = 0;
-        Time.timeScale = 1;
+        SetCharacterAttributes(characterData);
     }
+    else
+    {
+        Debug.LogWarning("No character data found. Using default attributes.");
+    }
+}
+    
 
     void Update()
     {
@@ -111,4 +123,30 @@ public class Player_Cont : MonoBehaviour
             GameOverPanle.gameObject.SetActive(true);
         }
     }
+
+    public void SetCharacterAttributes(CharacterData characterData)
+{
+    if (characterData != null)
+    {
+        running_speed = characterData.speed;
+        jump_force = characterData.jumpHeight;
+
+        // Change the material's BaseMap color
+        Material clothesMaterial = Resources.Load<Material>("Graphics/ANM/Main_Man/ANM");
+        if (clothesMaterial != null)
+        {
+            clothesMaterial.color = characterData.clothesColor; // Apply new color
+            Debug.Log($"Clothes color updated to: {characterData.clothesColor}");
+        }
+        else
+        {
+            Debug.LogWarning("Clothes material not found! Check the path.");
+        }
+
+        Debug.Log($"Character Applied: {characterData.characterName}, Speed: {running_speed}, Jump: {jump_force}");
+    }
+}
+
+
+
 }

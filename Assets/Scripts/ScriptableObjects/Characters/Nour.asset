@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ef6ee9aac5e1d84591b73b20eb7381c, type: 3}
+  m_Name: Nour
+  m_EditorClassIdentifier: 
+  characterName: Nour
+  speed: 30
+  jumpHeight: 15
+  characterIcon: {fileID: 21300000, guid: d1d6192e75042f348ad94aad89209556, type: 3}
+  characterPrefab: {fileID: 919132149155446097, guid: 33f5424e1947f9d419a77f6674517d5f,
+    type: 3}
+  clothesColor: {r: 0.546545, g: 0, b: 1, a: 0}
