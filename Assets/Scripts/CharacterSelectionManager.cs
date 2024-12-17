@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class CharacterSelectionManager : MonoBehaviour
 {
@@ -16,6 +17,9 @@ public class CharacterSelectionManager : MonoBehaviour
     [Header("Character Data")]
     public CharacterData[] availableCharacters; // Drag your Scriptable Objects here
     private int currentCharacterIndex = 0;
+
+    [Header("Time of Day Selection")]
+    public TMP_Dropdown timeDropdown; // Assign the dropdown in the Inspector
 
     [Header("3D Model Display")]
     public Transform modelHolder; // Drag the ModelHolder GameObject here
@@ -65,15 +69,34 @@ public class CharacterSelectionManager : MonoBehaviour
     }
 
     private void ConfirmCharacter()
-{
-    CharacterData selectedCharacter = availableCharacters[currentCharacterIndex];
-    Debug.Log($"Character Confirmed: {selectedCharacter.characterName}");
+    {
+        CharacterData selectedCharacter = availableCharacters[currentCharacterIndex];
+        Debug.Log($"Character Confirmed: {selectedCharacter.characterName}");
 
-    // Save the selected character in the GameManager
-    GameManager.Instance.SetSelectedCharacter(selectedCharacter);
+        // Save the selected character in the GameManager
+        GameManager.Instance.SetSelectedCharacter(selectedCharacter);
 
-    // Load the gameplay scene
-    UnityEngine.SceneManagement.SceneManager.LoadScene("GameplayScene");
-}
+        // Get the selected time of day from the dropdown
+        string selectedTime = timeDropdown.options[timeDropdown.value].text;
+        Debug.Log($"Time of Day Selected: {selectedTime}");
+
+        // Load the corresponding scene
+        switch (selectedTime)
+        {
+            case "Day":
+                SceneManager.LoadSceneAsync(3);
+                break;
+            case "Sunset":
+                SceneManager.LoadSceneAsync(4);
+                break;
+            case "Night":
+                SceneManager.LoadSceneAsync(5);
+                break;
+            default:
+                Debug.LogWarning("Invalid time of day selected!");
+                break;
+        }
+    }
+
 
 }
