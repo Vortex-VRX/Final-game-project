@@ -18,9 +18,15 @@ EditorBuildSettings:
     path: Assets/Scenes/GameplayScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
-    path: Assets/Scenes/SunRise.unity
-    guid: 07795a4137da783488b73a7737fcd9a8
+    path: Assets/Scenes/Midday.unity
+    guid: 95c19ce582f28044da53d129852e176b
   - enabled: 1
     path: Assets/Scenes/Night.unity
+    guid: 1fc6c5f55db9ec14882d29744001108e
+  - enabled: 0
+    path: Assets/Scenes/SunRise2.unity
+    guid: 07795a4137da783488b73a7737fcd9a8
+  - enabled: 0
+    path: Assets/Scenes/Night2.unity
     guid: 5ea316c9baf1bf94e837ae31b4c60ffe
   m_configObjects: {}
